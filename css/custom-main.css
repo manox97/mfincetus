@@ -1,0 +1,75 @@
+#footer.solid-bg {
+	background: rgb(255 0 0);
+}
+.paint-accent-color {
+	color: #000!important;
+	font-weight: bold;
+}
+.ele-gap{
+	margin-top: 30px!important;
+}
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+	
+}
+
+#page .facebook .soc-font-icon {
+    background-image: url(../images/social-icon-fb.png) !important;
+    background-size: cover !important;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+}
+#page .twitter .soc-font-icon {
+    background-image: url(../images/social-icon-twitter.png) !important;
+    background-size: cover !important;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+}
+#page .linkedin .soc-font-icon {
+    background-image: url(../images/social-icon-linkedin.png) !important;
+    background-size: cover !important;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+}
+.dt-icon-facebook:before, .facebook .soc-font-icon:before, .icomoon-the7-font-facebook:before,
+.dt-icon-twitter:before, .icomoon-the7-font-twitter:before, .twitter .soc-font-icon:before,
+.dt-icon-linkedin:before, .icomoon-the7-font-linkedin:before, .linkedin .soc-font-icon:before
+  {
+    content: "";
+}
+
+.scroll-top:before {
+    content: "";
+    font-size: 20px;
+    /* color: #fff; */
+}
+.scroll-top.on {
+    font-size: 50px;
+}
