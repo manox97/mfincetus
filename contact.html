@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US" class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="theme-color" content="rgb(255,0,0)" />
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    
+    <script type="text/javascript">
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            var originalAddEventListener = EventTarget.prototype.addEventListener,
+                oldWidth = window.innerWidth;
+
+            EventTarget.prototype.addEventListener = function(eventName, eventHandler, useCapture) {
+                if (eventName === "resize") {
+                    originalAddEventListener.call(this, eventName, function(event) {
+                        if (oldWidth === window.innerWidth) {
+                            return;
+                        } else if (oldWidth !== window.innerWidth) {
+                            oldWidth = window.innerWidth;
+                        }
+                        if (eventHandler.handleEvent) {
+                            eventHandler.handleEvent.call(this, event);
+                        } else {
+                            eventHandler.call(this, event);
+                        };
+                    }, useCapture);
+                } else {
+                    originalAddEventListener.call(this, eventName, eventHandler, useCapture);
+                };
+            };
+        };
+    </script>
+    <title>FinCetus</title>
+    <!-- <link rel='dns-prefetch' href='//maps.googleapis.com' /> -->
+    <link rel='dns-prefetch' href='//fonts.googleapis.com' />   
+
+
+    <link rel='stylesheet' id='rs-plugin-settings-css' href='css/settings.css' type='text/css' media='all' />
+    <style id='rs-plugin-settings-inline-css' type='text/css'>
+        #rs-demo-id {}
+    </style>
+    <link rel='stylesheet' id='js_composer_front-css' href='css/js_composer_front_custom.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='dt-web-fonts-css' href='https://fonts.googleapis.com/css?family=Roboto%3A400%2C600%2C700&#038;ver=4.9.7' type='text/css' media='all' />
+    <link rel='stylesheet' id='dt-main-css' href='css/t7.css' type='text/css' media='all' />
+
+    <style id='dt-main-inline-css' type='text/css'>
+        body #load {
+            display: block;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            z-index: 9901;
+            opacity: 1;
+            visibility: visible;
+            -webkit-transition: all .35s ease-out;
+            transition: all .35s ease-out;
+        }
+
+        .load-wrap {
+            width: 100%;
+            height: 100%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            text-align: center;
+        }
+
+        .load-wrap>svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        #load {
+            background-color: #ffffff;
+        }
+
+        .uil-default rect:not(.bk) {
+            fill: rgba(51, 51, 51, 0.3);
+        }
+
+        .uil-ring>path {
+            fill: rgba(51, 51, 51, 0.3);
+        }
+
+        .ring-loader .circle {
+            fill: rgba(51, 51, 51, 0.3);
+        }
+
+        .ring-loader .moving-circle {
+            fill: #333333;
+        }
+
+        .uil-hourglass .glass {
+            stroke: #333333;
+        }
+
+        .uil-hourglass .sand {
+            fill: rgba(51, 51, 51, 0.3);
+        }
+
+        .spinner-loader .load-wrap {
+            background-image: url("data:image/svg+xml,%3Csvg width='75px' height='75px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid' class='uil-default'%3E%3Crect x='0' y='0' width='100' height='100' fill='none' class='bk'%3E%3C/rect%3E%3Crect  x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='rgba%2851%2C51%2C51%2C0.3%29' transform='rotate(0 50 50) translate(0 -30)'%3E  %3Canimate attributeName='opacity' from='1' to='0' dur='1s' begin='0s' repeatCount='indefinite'/%3E%3C/rect%3E%3Crect  x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='rgba%2851%2C51%2C51%2C0.3%29' transform='rotate(30 50 50) translate(0 -30)'%3E  %3Canimate attributeName='opacity' from='1' to='0' dur='1s' begin='0.08333333333333333s' repeatCount='indefinite'/%3E%3C/rect%3E%3Crect  x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='rgba%2851%2C51%2C51%2C0.3%29' transform='rotate(60 50 50) translate(0 -30)'%3E  %3Canimate attributeName='opacity' from='1' to='0' dur='1s' begin='0.16666666666666666s' repeatCount='indefinite'/%3E%3C/rect%3E%3Crect  x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='rgba%2851%2C51%2C51%2C0.3%29' transform='rotate(90 50 50) translate(0 -30)'%3E  %3Canimate attributeName='opacity' from='1' to='0' dur='1s' begin='0.25s' repeatCount='indefinite'/%3E%3C/rect%3E%3Crect  x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='rgba%2851%2C51%2C51%2C0.3%29' transform='rotate(120 50 50) translate(0 -30)'%3E  %3Canimate attributeName='opacity' from='1' to='0' dur='1s' begin='0.3333333333333333s' repeatCount='indefinite'/%3E%3C/rect%3E%3Crect  x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='rgba%2851%2C51%2C51%2C0.3%29' transform='rotate(150 50 50) translate(0 -30)'%3E  %3Canimate attributeName='opacity' from='1' to='0' dur='1s' begin='0.4166666666666667s' repeatCount='indefinite'/%3E%3C/rect%3E%3Crect  x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='rgba%2851%2C51%2C51%2C0.3%29' transform='rotate(180 50 50) translate(0 -30)'%3E  %3Canimate attributeName='opacity' from='1' to='0' dur='1s' begin='0.5s' repeatCount='indefinite'/%3E%3C/rect%3E%3Crect  x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='rgba%2851%2C51%2C51%2C0.3%29' transform='rotate(210 50 50) translate(0 -30)'%3E  %3Canimate attributeName='opacity' from='1' to='0' dur='1s' begin='0.5833333333333334s' repeatCount='indefinite'/%3E%3C/rect%3E%3Crect  x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='rgba%2851%2C51%2C51%2C0.3%29' transform='rotate(240 50 50) translate(0 -30)'%3E  %3Canimate attributeName='opacity' from='1' to='0' dur='1s' begin='0.6666666666666666s' repeatCount='indefinite'/%3E%3C/rect%3E%3Crect  x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='rgba%2851%2C51%2C51%2C0.3%29' transform='rotate(270 50 50) translate(0 -30)'%3E  %3Canimate attributeName='opacity' from='1' to='0' dur='1s' begin='0.75s' repeatCount='indefinite'/%3E%3C/rect%3E%3Crect  x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='rgba%2851%2C51%2C51%2C0.3%29' transform='rotate(300 50 50) translate(0 -30)'%3E  %3Canimate attributeName='opacity' from='1' to='0' dur='1s' begin='0.8333333333333334s' repeatCount='indefinite'/%3E%3C/rect%3E%3Crect  x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='rgba%2851%2C51%2C51%2C0.3%29' transform='rotate(330 50 50) translate(0 -30)'%3E  %3Canimate attributeName='opacity' from='1' to='0' dur='1s' begin='0.9166666666666666s' repeatCount='indefinite'/%3E%3C/rect%3E%3C/svg%3E");
+        }
+
+        .ring-loader .load-wrap {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='72' height='72' fill='rgba%2851%2C51%2C51%2C0.3%29'%3E   %3Cpath opacity='.25' d='M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4'/%3E   %3Cpath d='M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z'%3E     %3CanimateTransform attributeName='transform' type='rotate' from='0 16 16' to='360 16 16' dur='0.8s' repeatCount='indefinite' /%3E   %3C/path%3E %3C/svg%3E");
+        }
+
+        .hourglass-loader .load-wrap {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='72' height='72' fill='rgba%2851%2C51%2C51%2C0.3%29'%3E   %3Cpath transform='translate(2)' d='M0 12 V20 H4 V12z'%3E      %3Canimate attributeName='d' values='M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z' dur='1.2s' repeatCount='indefinite' begin='0' keytimes='0;.2;.5;1' keySplines='0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8' calcMode='spline'  /%3E   %3C/path%3E   %3Cpath transform='translate(8)' d='M0 12 V20 H4 V12z'%3E     %3Canimate attributeName='d' values='M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z' dur='1.2s' repeatCount='indefinite' begin='0.2' keytimes='0;.2;.5;1' keySplines='0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8' calcMode='spline'  /%3E   %3C/path%3E   %3Cpath transform='translate(14)' d='M0 12 V20 H4 V12z'%3E     %3Canimate attributeName='d' values='M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z' dur='1.2s' repeatCount='indefinite' begin='0.4' keytimes='0;.2;.5;1' keySplines='0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8' calcMode='spline' /%3E   %3C/path%3E   %3Cpath transform='translate(20)' d='M0 12 V20 H4 V12z'%3E     %3Canimate attributeName='d' values='M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z' dur='1.2s' repeatCount='indefinite' begin='0.6' keytimes='0;.2;.5;1' keySplines='0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8' calcMode='spline' /%3E   %3C/path%3E   %3Cpath transform='translate(26)' d='M0 12 V20 H4 V12z'%3E     %3Canimate attributeName='d' values='M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z' dur='1.2s' repeatCount='indefinite' begin='0.8' keytimes='0;.2;.5;1' keySplines='0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8' calcMode='spline' /%3E   %3C/path%3E %3C/svg%3E");
+        }
+    </style>
+
+    <link rel='stylesheet' id='dt-awsome-fonts-back-css' href='css/back-compat.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='dt-awsome-fonts-css' href='css/fontawesome-all.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='dt-fontello-css' href='css/fontello.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='the7pt-static-css' href='css/post-type.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='dt-custom-css' href='css/custom.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='dt-media-css' href='css/media.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='the7pt.less-css' href='css/post-type-dynamic.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='dt-demostand-plugin-styles-css' href='css/public.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='style-css' href='css/style.css' type='text/css' media='all' />
+    
+
+    <link rel='stylesheet' id='bsf-icomoon-font-awesome-14x14-css' href='css/icomoon-font-awesome-14x14.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='ultimate-style-css' href='css/style.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='ult-btn-css' href='css/advanced-buttons.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='ultimate-headings-style-css' href='css/headings.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='ultimate-animate-css' href='css/animate.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='info-box-style-css' href='css/info-box.min.css' type='text/css' media='all' />
+    <script type='text/javascript' src='js/jquery.js'></script>
+    <script type='text/javascript' src='js/jquery-migrate.min.js'></script>
+    <script type='text/javascript' src='js/jquery.themepunch.tools.min.js'></script>
+    <script type='text/javascript' src='js/jquery.themepunch.revolution.min.js'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var dtLocal = {
+            
+            "passText": "To view this protected post, enter the password below:",
+            "moreButtonText": {
+                "loading": "Loading...",
+                "loadMore": "Load more"
+            },
+            "postID": "465",           
+            "ajaxurl": "blucetus.com/mail.php",
+            "contactMessages": {
+                "required": "One or more fields have an error. Please check and try again.",
+                "terms": "Please accept the privacy policy."
+            },
+            "ajaxNonce": "38ce22ec3f",
+            "pageData": {
+                "type": "page",
+                "template": "page",
+                "layout": null
+            },
+            "themeSettings": {
+                "smoothScroll": "off",
+                "lazyLoading": false,
+                "accentColor": {
+                    "mode": "solid",
+                    "color": "rgb(255,0,0)"
+                },
+                "desktopHeader": {
+                    "height": 120
+                },
+                "floatingHeader": {
+                    "showAfter": 180,
+                    "showMenu": true,
+                    "height": 70,
+                    "logo": {
+                        "showLogo": true,
+                        "html": "<img class=\" preload-me\" src=\"images\/logo.jpg\" srcset=\"images\/logo.jpg\ 200w, images\/logo.jpg\ 290w\" width=\"200\" height=\"40\"   sizes=\"145px\" alt=\"Blucetus\" \/>",
+                        "url": "index.html\/"
+                    }
+                },
+                "mobileHeader": {
+                    "firstSwitchPoint": 1100,
+                    "secondSwitchPoint": 800,
+                    "firstSwitchPointHeight": 70,
+                    "secondSwitchPointHeight": 70
+                },
+                "stickyMobileHeaderFirstSwitch": {
+                    "logo": {
+                        "html": "<img class=\" preload-me\" src=\"images\/logo.jpg\" srcset=\"images\/logo.jpg\ 200w, images\/logo.jpg\ 290w\" width=\"200\" height=\"40\"   sizes=\"145px\" alt=\"Blucetus\" \/>",
+                        "url": "index.html\/"
+                    }
+                },
+                "stickyMobileHeaderSecondSwitch": {
+                    "logo": {
+                        "html": "<img class=\" preload-me\" src=\"images\/logo.jpg\" srcset=\"images\/logo.jpg\ 200w, images\/logo.jpg\ 290w\" width=\"200\" height=\"40\"   sizes=\"145px\" alt=\"Blucetus\" \/>",
+                        "url": "index.html\/"
+                    }
+                },
+                "content": {
+                    "textColor": "#85868c",
+                    "headerColor": "#333333"
+                },
+                "stripes": {
+                    "stripe1": {
+                        "textColor": "#72777d",
+                        "headerColor": "#3c3e45"
+                    },
+                    "stripe2": {
+                        "textColor": "#f4f4f5",
+                        "headerColor": "#f4f4f5"
+                    },
+                    "stripe3": {
+                        "textColor": "#ffffff",
+                        "headerColor": "#ffffff"
+                    }
+                }
+            },
+            "VCMobileScreenWidth": "778"
+        };
+        var dtShare = {
+            "shareButtonText": {
+                "facebook": "Share on Facebook",
+                "twitter": "Tweet",
+                "pinterest": "Pin it",
+                "linkedin": "Share on Linkedin",
+                "whatsapp": "Share on Whatsapp",
+                "google": "Share on Google Plus",
+                "download": "Download image"
+            },
+            "overlayOpacity": "85"
+        };
+        /* ]]> */
+    </script>
+
+    <script type='text/javascript' src='js/above-the-fold.min.js'></script>
+    <script type='text/javascript' src='js/ultimate-params.min.js'></script>
+    <script type='text/javascript' src='js/custom.min.js'></script>
+    <script type='text/javascript' src='js/jquery-appear.min.js'></script>
+    <script type='text/javascript' src='js/headings.min.js'></script>
+    <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAGB6LvDDBcR1kpvW7vNSlgPoBY_GsTkkM'></script>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var load = document.getElementById("load");
+
+            var removeLoading = setTimeout(function() {
+                load.className += " loader-removed";
+            }, 500);
+        });
+    </script>
+
+    <link rel="icon" href="images/fav.jpg" type="image/gif" sizes="16x16" />
+    <link rel="icon" href="images/fav.jpg" type="image/gif" sizes="32x32" />
+    <link rel="preload" href="css/js_composer_front_custom.css" as="style">
+    <link rel="preload" href="css/custom.css" as="style">
+    <link rel="preload" href="css/media.css" as="style">
+    <link rel="preload" href="css/post-type-dynamic.css" as="style">
+    <link rel="preload" href="css/icomoon-font-awesome-14x14.css" as="style">
+
+    <script type="text/javascript">
+        function setREVStartSize(e) {
+            try {
+                e.c = jQuery(e.c);
+                var i = jQuery(window).width(),
+                    t = 9999,
+                    r = 0,
+                    n = 0,
+                    l = 0,
+                    f = 0,
+                    s = 0,
+                    h = 0;
+                if (e.responsiveLevels && (jQuery.each(e.responsiveLevels, function(e, f) {
+                        f > i && (t = r = f, l = e), i > f && f > r && (r = f, n = e)
+                    }), t > r && (l = n)), f = e.gridheight[l] || e.gridheight[0] || e.gridheight, s = e.gridwidth[l] || e.gridwidth[0] || e.gridwidth, h = i / s, h = h > 1 ? 1 : h, f = Math.round(h * f), "fullscreen" == e.sliderLayout) {
+                    var u = (e.c.width(), jQuery(window).height());
+                    if (void 0 != e.fullScreenOffsetContainer) {
+                        var c = e.fullScreenOffsetContainer.split(",");
+                        if (c) jQuery.each(c, function(e, i) {
+                            u = jQuery(i).length > 0 ? u - jQuery(i).outerHeight(!0) : u
+                        }), e.fullScreenOffset.split("%").length > 1 && void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 ? u -= jQuery(window).height() * parseInt(e.fullScreenOffset, 0) / 100 : void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 && (u -= parseInt(e.fullScreenOffset, 0))
+                    }
+                    f = u
+                } else void 0 != e.minHeight && f < e.minHeight && (f = e.minHeight);
+                e.c.closest(".rev_slider_wrapper").css({
+                    height: f
+                })
+            } catch (d) {
+                console.log("Failure at Presize of Slider:" + d)
+            }
+        };
+    </script>
+   
+    <noscript>
+        <style type="text/css">
+            .wpb_animate_when_almost_visible {
+                opacity: 1;
+            }
+        </style></noscript>    
+</head>
+
+<body class="home page-template-default page page-id-416 the7-core-ver-1.9.0.2 slideshow-on disabled-hover-icons click-effect-on-img dt-responsive-on srcset-enabled btn-flat custom-btn-color custom-btn-hover-color bold-icons phantom-sticky phantom-shadow-decoration phantom-main-logo-on sticky-mobile-header top-header first-switch-logo-left first-switch-menu-right second-switch-logo-left second-switch-menu-right right-mobile-menu layzr-loading-on popup-message-style dt-fa-compatibility the7-ver-6.6.3 wpb-js-composer js-comp-ver-5.4.7 vc_responsive album-minuatures-style-2">
+
+    <div id="load" class="spinner-loader">
+        <div class="load-wrap"></div>
+    </div>
+    <div id="page">
+        <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+        <div class="masthead inline-header right widgets shadow-decoration medium-mobile-menu-icon dt-parent-menu-clickable show-device-logo show-mobile-logo" role="banner">
+            <div class="top-bar top-bar-line-hide">
+                <div class="top-bar-bg"></div>
+                <div class="left-widgets mini-widgets"><span class="mini-contacts phone show-on-desktop in-top-bar-left in-top-bar">+91 97890 01881 </span><span class="mini-contacts address show-on-desktop in-top-bar-left in-top-bar">Chennai, India</span><span class="mini-contacts email  show-on-desktop in-top-bar-left in-top-bar">contact@fincetus.com</span></div>
+                <div class="right-widgets mini-widgets">
+                    <div class="soc-ico show-on-desktop in-top-bar-right hide-on-second-switch disabled-bg accent-border border-on hover-accent-bg hover-accent-border hover-border-on" style="display:none">
+                         <a title="Facebook" href1="https://www.facebook.com/BluCetus/" target="_blank" class="facebook"><span class="soc-font-icon"></span><span class="screen-reader-text">Facebook</span></a>
+                        <a title="Twitter" href1="https://twitter.com/blucetus" target="_blank" class="twitter"><span class="soc-font-icon"></span><span class="screen-reader-text">Twitter</span></a>
+                        <!-- <a title="YouTube" href="#" target="_blank" class="you-tube"><span class="soc-font-icon"></span><span class="screen-reader-text">YouTube</span></a> -->
+                        <a title="Linkedin" href1="https://www.linkedin.com/company/blucetus/" target="_blank" class="linkedin"><span class="soc-font-icon"></span><span class="screen-reader-text">Linkedin</span></a>
+                    </div>
+                    <!-- <div class="text-area show-on-desktop hide-on-first-switch hide-on-second-switch">
+                        <p><img style="margin-bottom:-5px;" src="https://the7.io/dental/wp-content/uploads/sites/45/2017/12/cards.png" alt="" width="77" height="24" /></p>
+                    </div> -->
+                </div>
+            </div>
+           <header class="header-bar">
+                <div class="branding">
+                    <div id="site-title" class="assistive-text">Blucetus</div>
+                    <div id="site-description" class="assistive-text">Blucetus</div>
+
+                    <a href="http://fincetus.com/"><img class=" preload-me" src="images/logo.jpg" srcset="images/logo.jpg 145w, images/logo.jpg 290w" width="145" height="40" sizes="145px" alt="Blucetus" /><img class="mobile-logo preload-me" src="images/logo.jpg" srcset="images/logo.jpg 112w, images/logo.jpg 224w" width="112" height="30" sizes="112px" alt="Blucetus" /></a> </div>
+
+                <ul id="primary-menu" class="main-nav underline-decoration upwards-line" role="menu">
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-416 current_page_item menu-item-1487"><a href='index.html' data-level='1'><span class="menu-item-text"><span class="menu-text">Home</span></span></a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1486"><a href='about.html' data-level='1'><span class="menu-item-text"><span class="menu-text">About us</span></span></a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1484 has-children"><a href='preciousmetals.html' data-level='1'><span class="menu-item-text"><span class="menu-text">PRECIOUS METALS</span></span></a><ul class="sub-nav hover-style-click-bg level-arrows-on">
+                            <!-- <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1485 first"><a href='service-business-consulting.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Business Consulting</span></span></a></li> -->
+
+                            <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1488"><a href='service-technology-consulting.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Technology Consulting</span></span></a></li> -->
+
+                            <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1489"><a href='service-management-consulting.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Management Consulting</span></span></a></li> -->
+
+                            <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1490"><a href='service-professional-services.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Professional Services</span></span></a></li> -->
+
+                            <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1491"><a href='service-support-services.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Support Services</span></span></a></li> -->
+
+                            <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1492"><a href='service-training-services.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Training Services</span></span></a></li> -->
+                        </ul>
+                    </li>
+
+
+
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1484 has-children"><a href='service.html' data-level='1'><span class="menu-item-text"><span class="menu-text">SERVICES</span></span></a><ul class="sub-nav hover-style-click-bg level-arrows-on">
+                            <!-- <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1485 first"><a href='solutions-unified-communication.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Unified Communication</span></span></a></li> -->
+
+                            <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1488"><a href='solutions-contact-center.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Contact Center</span></span></a></li> -->
+                            
+                            <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1489"><a href='solutions-custom-applications-development.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Custom Applications Development</span></span></a></li> -->                           
+                        </ul>
+                    </li>                  
+                   
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1480"><a href='resources.html' data-level='1'><span class="menu-item-text"><span class="menu-text">RESOURCES</span></span></a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1481 act first"><a href='contact.html' data-level='1'><span class="menu-item-text"><span class="menu-text">Contact</span></span></a></li>
+                </ul>
+               
+            </header>
+        </div>
+        <div class='dt-close-mobile-menu-icon'><span></span></div>
+        <div class='dt-mobile-header'>
+            <ul id="mobile-menu" class="mobile-main-nav" role="menu">
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-416 current_page_item menu-item-1487 act first"><a href='index.html' data-level='1'><span class="menu-item-text"><span class="menu-text">Home</span></span></a></li>
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1486"><a href='about.html' data-level='1'><span class="menu-item-text"><span class="menu-text">About us</span></span></a></li>
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1484 has-children"><a href='preciousmetals.html' data-level='1'><span class="menu-item-text"><span class="menu-text">PRECIOUS METALS</span></span></a><ul class="sub-nav hover-style-click-bg level-arrows-on">
+                        <!-- <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1485 first"><a href='service-business-consulting.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Business Consulting</span></span></a></li> -->
+
+                        <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1488"><a href='service-technology-consulting.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Technology Consulting</span></span></a></li> -->
+
+                        <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1489"><a href='service-management-consulting.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Management Consulting</span></span></a></li> -->
+                        <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1490"><a href='service-professional-services.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Professional Services</span></span></a></li> -->
+                        <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1491"><a href='service-support-services.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Support Services</span></span></a></li> -->
+                        <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1492"><a href='service-training-services.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Training Services</span></span></a></li> -->
+                    </ul>
+                </li>
+
+                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1484 has-children"><a href='service.html' data-level='1'><span class="menu-item-text"><span class="menu-text">SERVICES</span></span></a><ul class="sub-nav hover-style-click-bg level-arrows-on">
+                        <!-- <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1485 first"><a href='solutions-unified-communication.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Unified Communication</span></span></a></li> -->
+
+                        <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1488"><a href='solutions-contact-center.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Contact Center</span></span></a></li> -->
+                        
+                        <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1489"><a href='solutions-custom-applications-development.html' data-level='2'><span class="menu-item-text"><span class="menu-text">Custom Applications Development</span></span></a></li> -->                        
+                    </ul>
+                </li>
+
+
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1480"><a href='resources.html' data-level='1'><span class="menu-item-text"><span class="menu-text">RESOURCES</span></span></a></li>
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1481"><a href='contact.html' data-level='1'><span class="menu-item-text"><span class="menu-text">Contact</span></span></a></li>
+            </ul>
+            <div class='mobile-mini-widgets-in-menu'></div>
+        </div>
+
+       
+
+       
+
+        
+
+         <!-- Contact page contents1 -->
+        <div class="page-title title-left solid-bg page-title-responsive-enabled" style="display: none;" >
+            <div class="wf-wrap">
+                <div class="page-title-head hgroup">
+                    <h1>Contact</h1>
+                </div>
+                <!-- <div class="page-title-breadcrumbs">
+                    <div class="assistive-text">You are here:</div>
+                    <ol class="breadcrumbs text-small" xmlns:v="http://rdf.data-vocabulary.org/#">
+                        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="https://the7.io/dental/" title="">Home</a></li>
+                        <li class="current">Contact</li>
+                    </ol>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="page-title title-left solid-bg page-title-responsive-enabled">
+            <div class="wf-wrap">
+                <!-- <div class="page-title-head hgroup">
+                    <h2>About us</h2>
+                </div> -->
+                <!-- <div class="page-title-breadcrumbs">
+                    <div class="assistive-text">You are here:</div>
+                    <ol class="breadcrumbs text-small" xmlns:v="http://rdf.data-vocabulary.org/#">
+                        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="https://the7.io/dental/" title="">Home</a></li>
+                        <li class="current">About us</li>
+                    </ol>
+                </div> -->
+                <img class = "under-construction" src="./images/underconstruction.png" alt="Under constructions">
+            </div>
+        </div>
+
+        <!-- Contact page contents2 -->
+
+        <div id="main" class="sidebar-none sidebar-divider-off" style="padding-top:40px; padding-bottom:0px; display:none">
+            <div class="main-gradient"></div>
+            <div class="wf-wrap">
+                <div class="wf-container-main">
+                    <div id="content" class="content" role="main">
+                        <div class="vc_row wpb_row vc_row-fluid vc_custom_1515175347461 vc_row-o-content-top vc_row-flex">
+                            <div class="wpb_column vc_column_container vc_col-sm-6 vc_col-lg-6 vc_col-md-6">
+                                <div class="vc_column-inner ">
+                                    <div class="wpb_wrapper">
+                                        <div class="aio-icon-component  vc_custom_1514458781458  accent-icon-bg accent-border-color style_1">
+                                            <div id="Info-box-wrap-9111" class="aio-icon-box left-icon" style="">
+                                                <div class="aio-icon-left">
+                                                    <div class="ult-just-icon-wrapper  ">
+                                                        <div class="align-icon" style="text-align:center;">
+                                                            <div class="aio-icon advanced " style="color:#ffffff;border-style:;border-color:#333333;border-width:1px;width:50px;height:50px;line-height:50px;border-radius:500px;font-size:24px;display:inline-block;">
+                                                                <i class="icomoon-font-awesome-14x14-map-marker"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="aio-ibd-block">
+                                                    <div class="aio-icon-header">
+                                                        <h3 class="aio-icon-title ult-responsive" data-ultimate-target="#Info-box-wrap-9111 .aio-icon-title" data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:16px;&quot;,&quot;line-height&quot;:&quot;desktop:16px;&quot;}" style="font-weight:bold;">Address</h3>
+                                                    </div>
+                                                    <div class="aio-icon-description ult-responsive" data-ultimate-target="#Info-box-wrap-9111 .aio-icon-description" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" style="">Chennai, India, 600 091.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="aio-icon-component  vc_custom_1514458785737  accent-icon-bg accent-border-color style_1">
+                                            <div id="Info-box-wrap-7216" class="aio-icon-box left-icon" style="">
+                                                <div class="aio-icon-left">
+                                                    <div class="ult-just-icon-wrapper  ">
+                                                        <div class="align-icon" style="text-align:center;">
+                                                            <div class="aio-icon advanced " style="color:#ffffff;border-style:;border-color:#333333;border-width:1px;width:50px;height:50px;line-height:50px;border-radius:500px;font-size:24px;display:inline-block;">
+                                                                <i class="icomoon-font-awesome-14x14-phone"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="aio-ibd-block">
+                                                    <div class="aio-icon-header">
+                                                        <h3 class="aio-icon-title ult-responsive" data-ultimate-target="#Info-box-wrap-7216 .aio-icon-title" data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:16px;&quot;,&quot;line-height&quot;:&quot;desktop:16px;&quot;}" style="font-weight:bold;">Phone numbers</h3>
+                                                    </div>
+                                                    <div class="aio-icon-description ult-responsive" data-ultimate-target="#Info-box-wrap-7216 .aio-icon-description" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" style="">+91 97890 01881 </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="aio-icon-component  vc_custom_1514458789888  accent-icon-bg accent-border-color style_1">
+                                            <div id="Info-box-wrap-7248" class="aio-icon-box left-icon" style="">
+                                                <div class="aio-icon-left">
+                                                    <div class="ult-just-icon-wrapper  ">
+                                                        <div class="align-icon" style="text-align:center;">
+                                                            <div class="aio-icon advanced " style="color:#ffffff;border-style:;border-color:#333333;border-width:1px;width:50px;height:50px;line-height:50px;border-radius:500px;font-size:24px;display:inline-block;">
+                                                                <i class="icomoon-font-awesome-14x14-envelope"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="aio-ibd-block">
+                                                    <div class="aio-icon-header">
+                                                        <h3 class="aio-icon-title ult-responsive" data-ultimate-target="#Info-box-wrap-7248 .aio-icon-title" data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:16px;&quot;,&quot;line-height&quot;:&quot;desktop:16px;&quot;}" style="">Email</h3>
+                                                    </div>
+                                                    <div class="aio-icon-description ult-responsive" data-ultimate-target="#Info-box-wrap-7248 .aio-icon-description" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" style="">contact@blucetus.com</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                            <div class="wpb_column vc_column_container vc_col-sm-6 vc_col-lg-6 vc_col-md-6 vc_hidden-md vc_hidden-sm vc_hidden-xs">
+                                <div class="vc_column-inner">
+                                    <div class="wpb_wrapper">
+                                        <div class="shortcode-single-image-wrap alignleft  vc_custom_1515175297662">
+                                            <div class="shortcode-single-image">
+                                                <div class="fancy-media-wrap" style=""><img class="lazy-load preload-me is-loaded" src="images/contact-us.jpg" width="600" height="425" data-dt-location="images/" style="will-change: auto;" alt="" srcset="images/contact-us.jpg 600w, images/contact-us.jpg 1200w"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="menu_section" class="vc_row wpb_row vc_row-fluid vc_custom_1515175073570 vc_row-o-equal-height vc_row-flex">
+                            <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-6 vc_col-md-6 vc_col-has-fill">
+                                <div class="vc_column-inner vc_custom_1515175022452">
+                                    <div class="wpb_wrapper">
+                                        <div id="ultimate-heading-41795b47803cca619" class="uvc-heading ult-adjust-bottom-margin ultimate-heading-41795b47803cca619 uvc-4449 " data-hspacer="line_with_icon" data-hline_width="150" data-hicon_type="selector" data-hborder_style="solid" data-hborder_height="3" data-hborder_color="rgb(255,0,0)" data-icon_width="18" data-hfixer="10" data-halign="center" style="text-align:center">
+                                            <div class="dynamic_ultimate_heading_css">
+                                                <style>
+                                                    #ultimate-heading-41795b47803cca619 .uvc-heading-spacer.line_with_icon:before,
+                                                    #ultimate-heading-41795b47803cca619 .uvc-heading-spacer.line_with_icon:after {
+                                                        width: 75px;
+                                                        border-style: solid;
+                                                        border-color: rgb(255,0,0);
+                                                        border-bottom-width: 3px;
+                                                    }
+
+                                                    #ultimate-heading-41795b47803cca619 .uvc-heading-spacer.line_with_icon:before {
+                                                        right: 256.5px;
+                                                    }
+
+                                                    #ultimate-heading-41795b47803cca619 .uvc-heading-spacer.line_with_icon:after {
+                                                        left: 256.5px;
+                                                    }
+                                                </style>
+                                            </div>
+                                            <div class="uvc-main-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-41795b47803cca619 h2" data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:30px;&quot;,&quot;line-height&quot;:&quot;desktop:40px;&quot;}">
+                                                <h2 style="font-weight:bold;">Contact Form</h2>
+                                            </div>
+                                            <div class="uvc-heading-spacer line_with_icon" style="margin-bottom: 40px; height: 21px;">
+                                                <div class="ult-just-icon-wrapper  ">
+                                                    <div class="align-icon" style="text-align:center;">
+                                                        <div class="aio-icon none " style="color:#3db3ef;font-size:18px;display:inline-block;">
+                                                            <i class="icomoon-font-awesome-14x14-chevron-down"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <form class="dt-contact-form dt-form" action="/" method="post">
+                                            <input type="hidden" name="widget_id" value="presscore-contact-form-widget--1"><input type="hidden" name="send_message" value=""><div class="form-fields"><span class="form-name"><label class="assistive-text">Name *</label><input type="text" class="validate[required]" placeholder="Name *" name="name" value="" aria-required="true">
+                                                </span><span class="form-mail"><label class="assistive-text">E-mail *</label><input type="text" class="validate[required,custom[email]]" placeholder="E-mail *" name="email" value="" aria-required="true">
+                                                </span><span class="form-telephone"><label class="assistive-text">Telephone</label><input type="text" placeholder="Telephone" name="telephone" value="" aria-required="false">
+                                                </span></div><span class="form-message"><label class="assistive-text">Message</label><textarea placeholder="Message" name="message" rows="7" aria-required="false"></textarea>
+                                            </span><p><a href="#" class="dt-btn dt-btn-m dt-btn-submit" rel="nofollow"><span>Send message</span></a><input class="assistive-text" type="submit" value="submit"></p>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-offset-0 vc_col-lg-6 vc_col-md-offset-0 vc_col-md-6 vc_col-sm-offset-0 vc_col-has-fill" >
+                                <div class="vc_column-inner vc_custom_1515175005736">
+                                    <div class="wpb_wrapper">
+                                        <div id="ultimate-heading-23165b47803cca9cb" class="uvc-heading ult-adjust-bottom-margin ultimate-heading-23165b47803cca9cb uvc-1222 " data-hspacer="line_with_icon" data-hline_width="150" data-hicon_type="selector" data-hborder_style="solid" data-hborder_height="3" data-hborder_color="rgb(255,0,0)" data-icon_width="18" data-hfixer="10" data-halign="center" style="text-align:center">
+                                            <div class="dynamic_ultimate_heading_css">
+                                                <style>
+                                                    #ultimate-heading-23165b47803cca9cb .uvc-heading-spacer.line_with_icon:before,
+                                                    #ultimate-heading-23165b47803cca9cb .uvc-heading-spacer.line_with_icon:after {
+                                                        width: 75px;
+                                                        border-style: solid;
+                                                        border-color: rgb(255,0,0);
+                                                        border-bottom-width: 3px;
+                                                    }
+
+                                                    #ultimate-heading-23165b47803cca9cb .uvc-heading-spacer.line_with_icon:before {
+                                                        right: 256.5px;
+                                                    }
+
+                                                    #ultimate-heading-23165b47803cca9cb .uvc-heading-spacer.line_with_icon:after {
+                                                        left: 256.5px;
+                                                    }
+                                                </style>
+                                            </div>
+                                            <div class="uvc-main-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-23165b47803cca9cb h2" data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:30px;&quot;,&quot;line-height&quot;:&quot;desktop:40px;&quot;}">
+                                                <h2 style="font-weight:bold;">Directions</h2>
+                                            </div>
+                                            <div class="uvc-heading-spacer line_with_icon" style="margin-bottom: 40px; height: 21px;">
+                                                <div class="ult-just-icon-wrapper  ">
+                                                    <div class="align-icon" style="text-align:center;">
+                                                        <div class="aio-icon none " style="color:#3db3ef;font-size:18px;display:inline-block;">
+                                                            <i class="icomoon-font-awesome-14x14-chevron-down"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="wrap_map_5b47803ccad65" class="ultimate-map-wrapper ult-adjust-bottom-margin " style="margin-bottom:30px;padding:0px; height:300px;">                                            
+                                            <div class="map " id="map" style="height: 400px;">
+                                            </div>
+                                        </div>
+                                        <script type="text/javascript">
+
+
+
+
+                                          var map;
+                                          function initMap() {                                              
+                                          
+                                              
+                                              geocoder = new google.maps.Geocoder();
+                                                 var address = "madipakkam newkubera nagar";
+                                                 geocoder.geocode({
+                                                     'address': address
+                                                 }, function (results, status) {
+                                                     if (status == google.maps.GeocoderStatus.OK) {
+                                                         // var latitude = results[0].geometry.location.lat();
+                                                         // var longitude = results[0].geometry.location.lng();
+                                                          var latitude =  12.9607267;
+                                                         var longitude = 80.1972515;
+
+                                                         var latlng = new google.maps.LatLng(latitude, longitude);
+                                                         var mapOptions = {
+                                                             zoom: 16,
+                                                             center: latlng,
+                                                             mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                         }
+
+                                                         map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                                                         var latlng = new google.maps.LatLng(latitude, longitude);
+                                                         map.setCenter(latlng);
+                                                         var marker = new google.maps.Marker({
+                                                             map: map,
+                                                             position: latlng,
+                                                             title: 'Welcome To BLUCETUS!'
+                                                         });
+                                                     }
+                                                 });
+                                          }
+                                        </script>                                       
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        
+
+
+        <footer id="footer" class="footer solid-bg">
+
+            <div id="bottom-bar" class="full-width-line logo-left" role="contentinfo">
+                <div class="wf-wrap">
+                    <div class="wf-container-bottom">
+                        <div id="branding-bottom" style="display: none;"><a href="http://fincetus.com/"><img class=" preload-me" src="images/logo.png" srcset="images/logo.png 112w, images/logo.png 224w" width="112" height="30" sizes="112px" alt="BluCetus" /></a></div>
+                        <div class="wf-float-left">
+                            <a href="index.html" target="_blank"><p>© All rights reserved <span>FinCetus</span> 2024 </p></a>
+                        </div>
+                        <div class="wf-float-right">
+                            <div class="bottom-text-block">
+                                <p><span class="paint-accent-color">Email:</span> contact@fincetus.com<span class="paint-accent-color" style="padding-left: 20px">Tel:</span>+91 97890 01881 &nbsp;&nbsp;</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <a href="#" class="scroll-top">&#11014;<span class="screen-reader-text">Go to Top</span></a>
+    </div>
+
+
+
+
+
+    <link rel='stylesheet' property='stylesheet' id='rs-icon-set-fa-icon-css' href='https://the7.io/dental/wp-content/plugins/revslider/public/assets/fonts/font-awesome/css/font-awesome.css' type='text/css' media='all' />
+
+    
+     <link rel='stylesheet' id='ult-background-style-css' href='css/background-style.min.css' type='text/css' media='all' />
+    <script type='text/javascript' src='js/main.min.js'></script>
+    <script type='text/javascript' src='js/post-type.js'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var dtDemostand = {
+            "cookiePath": "\/",
+            "skinURI": {
+                "key": "dt_demo_skin"
+            },
+            "transport": "get",
+            "skin": "skin11r",
+            "layout": "wide",
+            "header": "left",
+            "frontPageUrl": "https:\/\/the7.io\/dental\/"
+        };
+        /* ]]> */
+    </script>
+
+    <script type='text/javascript' src='js/public-min.js'></script>
+    <script type='text/javascript' src='js/info-box.min.js'></script>
+    <script type='text/javascript' src='js/wp-embed.min.js'></script>
+    <script type='text/javascript' src='js/js_composer_front.min.js'></script>
+    <script type='text/javascript' src='js/ultimate_bg.min.js'></script>
+    <script type='text/javascript' src='js/jquery.validationEngine.js'></script>
+    <script type='text/javascript' src='js/jquery.validationEngine-en.js'></script>
+    <script type='text/javascript' src='js/dt-contact-form.js'></script>
+    <script type="text/javascript" src="js/custom-main.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/custom-main.css">
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLFP64nhUkjzU_8EXxrdNz9cNRxgR_dI0&callback=initMap"
+    async defer></script>
+
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- <link href="assets/css/ContactUsStyles.css" rel="stylesheet" type="text/css" />
+<form id="form1" method="post" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"])."?".$_SERVER["QUERY_STRING"];?>"> -->
+
+
+
+
+
+    <!--  Old Table
+    <table class="ContactUSMEA">
+        <tr>
+            <td class="Label"> First name:<span class="requiredStar">*</span> </td>
+            <td class="Label"> Last name:<span class="requiredStar">*</span> </td>
+            <td class="Label"> Job Title:<span class="requiredStar">*</span> </td>
+            <td class="Label"> Phone Number:<span class="requiredStar">*</span> </td>
+        </tr>
+        <tr>
+            <td> <input class="input" type="text" id="first_name" name="fname" required runat="server" /></td>
+            <td> <input class="input" type="text" id="last_name" name="lname" required runat="server" /></td>
+            <td> <input class="input" type="text" id="Job_Title" name="jobtitle" required /></td>
+            <td> <input class="input" type="text" id="Phone_Number" name="phonenumber" required runat="server" required /></td>
+
+        </tr>
+        <tr>
+            <td class="Label"> Company Name:<span class="requiredStar">*</span> </td>
+            <td class="Label"> Company Email:<span class="requiredStar">*</span> </td>
+
+            <td class="Label"> City:<span class="requiredStar">*</span> </td>
+            <td class="Label"> Country:<span class="requiredStar">*</span> </td>
+        </tr>
+
+        <tr>
+            <td> <input class="input" type="text" id="Company_Name" name="Cname" runat="server" required /></td>
+            <td> <input class="input" type="email" id="Company_Email" name="Cemail" runat="server" required /></td>
+
+            <td> <input class="input" type="text" id="city" name="city" runat="server" required /></td>
+            <td> <input class="input" type="text" id="country" name="country" runat="server" required /></td>
+        </tr>
+        <tr>
+            <td colspan="4" class="Label"> What can we help you with?<span class="requiredStar">*</span></td>
+        </tr>
+        <tr>
+            <td colspan="4"><textarea name="Customer_Input" cols="122" rows="5"></textarea> </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <td colspan="4" style="text-align:center">
+                <input id="h_f" name="h_f" type="hidden"></input>
+                <input id="btnsubmit" type="submit" value="Submit" onclick="submitForm();"></input>
+            </td>
+        </tr>
+        
+        $body    = "Hi,
+        Received an enquiry on our site by the below mentioned lead.
+
+        Full Name    :  " . $fname . " " . $lname . "    
+        Job Title    :  " . $jobtitle . "
+        Company Name :  " . $company . "
+        Company Email:  " . $companyemail . "
+        Phone Number :  " . $phonenumber . "
+        City: ".$city."
+        Country: ".$country."
+        Comments     :  " . $comment . "
+
+        Thank you! ";
+
+    </table> -->
+<!-- 
+Name
+Email
+Phone 
+Country
+What can we help you with? -->
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <table class="ContactUSMEA">
+        <tr>
+            <td class="Label"> Name :<span class="requiredStar">*</span> </td>
+            <td class="Label"> Phone Number:<span class="requiredStar">*</span> </td>
+            <td class="Label"> Email:<span class="requiredStar">*</span> </td>
+            <td class="Label"> Country:<span class="requiredStar">*</span> </td>
+        </tr>
+        <tr>
+            <td> <input class="input" type="text" id="first_name" name="fname" required runat="server" /></td>
+            <td> <input class="input" type="text" id="Phone_Number" name="phonenumber" required runat="server" required /></td>
+            <td> <input class="input" type="email" id="Company_Email" name="Cemail" runat="server" required /></td>
+            <td> <input class="input" type="text" id="country" name="country" runat="server" required /></td>
+        </tr>
+        
+        <tr>
+            <td colspan="4" class="Label"> What can we help you with?<span class="requiredStar">*</span></td>
+        </tr>
+        <tr>
+            <td colspan="4"><textarea name="Customer_Input" cols="122" rows="5"></textarea> </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <td colspan="4" style="text-align:center">
+                <input id="h_f" name="h_f" type="hidden"></input>
+                <input id="btnsubmit" type="submit" value="Submit" class="button" onclick="submitForm();"></input>
+            </td>
+        </tr>
+
+
+    </table>
+
+
+
+
+</form>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script>
+    function submitForm() {
+        $('#h_f').val($(window.parent.document.body).find('.menu-item.Region.Highlighted').eq(0).attr('id'));
+        return true;
+    }
+</script>
+
+<?php
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    $thankyoulink = 'http://mea.hitachi-solutions.com/contact-us/thank-you/';
+    
+?>
+<script>
+    window.parent.window.location.href = "<?php echo $thankyoulink ?>";
+</script>
+
+
+<?php   
+}
+?>
+ -->
+
+
+
+
+
+
+<!-- <?php
+// define variables and set to empty values
+$fname = $lname = $jobtitle = $company = $companyemail = $phonenumber = $comment = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $Region = ($_POST["h_f"]);
+    
+    $fname    = ($_POST["fname"]);
+    
+    $jobtitle = ($_POST["jobtitle"]);
+    
+    
+    $companyemail = ($_POST["Cemail"]);
+    $phonenumber  = ($_POST["phonenumber"]);
+    
+    $country = ($_POST["country"]);
+ 
+    $comment = ($_POST["Customer_Input"]);
+    $region  = $_GET['region'];
+    
+    require_once "Mail.php";
+    
+    $from    = "msamuel@hitachisolutions.com";
+    $to      = "msamuel@hitachisolutions.com, mbakthavatchalam@hitachisolutions.com";
+    $subject = "Enquiry for MEA site from - " . $region . " region";
+    $body    = "Hi,
+Received an enquiry on our site by the below mentioned lead.
+
+Name  :  " . $fname . " " . $lname . "
+Email :  " . $companyemail . "
+Phone Number  :  " . $phonenumber . "
+Country       : ".$country."
+Comments      :  " . $comment . "
+
+Thank you! ";
+    
+    $host = "10.100.2.235";
+    $port = "25";
+    
+    
+    $headers = array(
+        'From' => $from,
+        'To' => $to,
+        'Subject' => $subject
+    );
+    $smtp    = Mail::factory('smtp', array(
+        'host' => $host,
+        'port' => $port,
+        'auth' => false
+    ));
+    
+    $mail = $smtp->send($to, $headers, $body);
+    
+    if (PEAR::isError($mail)) {
+        echo ("<p>" . $mail->getMessage() . "</p>");
+    }
+    
+}
+
+?>
+ -->

@@ -1,0 +1,367 @@
+.wp-caption-text,.sticky,.gallery-caption,.bypostauthor{}
+
+
+
+
+@media only screen  and (min-width : 1100px) {
+	#rev_slider_2_1 .tp-parallax-wrap {
+	    left: 0 !important;
+	}
+
+	img.el-width-100 {
+	    width: 100vw !important;
+	    height: auto !important;
+	}
+
+	#main-slideshow .tp-caption {
+		/*top: 0px !important;*/
+	}
+
+	#main-slideshow .splitted{
+		top: 0px !important;
+	    left: 70px;
+	}
+
+	#slide-2-layer-8 #slide-2-layer-7{
+		left: 100px;
+	    top: 60px !important;
+	}
+
+	#slide-2-layer-8 #slide-2-layer-8 {
+		left: 280px;
+	    top: 60px !important;
+	}
+}
+
+
+
+.home-page-service .wpb_column.vc_column_container.vc_col-sm-4 {   
+   border: 1px solid #d0bebe;
+}
+.home-page-service .wpb_column.vc_column_container.vc_col-sm-4:hover {
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.4);
+    border: 0px solid #d0bebe;
+}
+.home-sub-heading {
+	text-align: justify;
+}
+
+@media only screen  and (max-width : 1099px) {
+	##main-slideshow #slide-2-layer-3{
+		top: -50px !important;
+    	left: 20px !important;
+	}
+}
+
+
+/*About us page common code */
+.aboutus-reasons-panel .aboutus-reasons-heading-mode2{
+	border: solid 1px;
+    text-align: center;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    padding: 10px 0 0 0;
+    background-color: gray;
+}
+.aboutus-reasons-panel .aboutus-reasons-heading-mode1 {
+	border: solid 1px;
+    text-align: center;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    padding: 10px 0 0 0;
+    background-color: #0098f0;
+}
+
+.aboutus-reasons-panel .aboutus-reasons-heading-mode1 h3, .aboutus-reasons-panel .aboutus-reasons-heading-mode2 h3{
+	color: #fff;
+	font-size: 20px
+}
+
+.aboutus-reasons-panel .aboutus-reasons-content{
+	border: solid 1px;
+    border-radius: 10px;
+    padding: 10px 10px 5px 15px;
+}
+
+.home-page-service .wpb_column.vc_column_container.vc_col-sm-4 {
+    border: 1px solid #d0bebe;
+}
+
+.aboutus-work-panel .fancy-media-wrap img {
+	border-bottom: solid 4px gray;
+}
+
+.aboutus-work-panel .uvc-main-heading h2 {
+	text-align: center;
+    font-size: 18px !important;
+}
+
+.aboutus-mm-panel .aboutus-mm-social a {
+	border: solid 1px;
+}
+
+.aboutus-mm-panel .uvc-main-heading h2 {
+	font-size: 20px !important;
+    text-align: center;
+}
+
+.aboutus-mm-panel .uvc-sub-heading {
+	padding: 10px;
+}
+
+
+/*------------    services   -----------*/
+.service-serices-panel {
+    margin-top: 20px;
+}
+.service-serices-panel:hover {
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.4);
+    border: 0px solid #d0bebe;
+}
+
+.service-serices-panel .service-serices-txt {	
+    text-align: center;
+    width: 100%;
+}
+.service-serices-panel11 a img {
+	height: 200px;
+}
+
+/*----------- service Bussiness consulting --------------*/
+
+.ser-buss-consult-panel .ser-buss-consult-content{
+	border: solid 1px;
+    border-radius: 0px;
+    padding: 10px 10px 5px 15px;
+}
+.ser-buss-consult-panel:hover {
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.4);
+    border: 0px solid #d0bebe;
+}
+.ser-buss-consult-panel .ser-buss-consult-heading-mode1 h3{
+	color: #fff;
+	font-size: 18px
+}
+.ser-buss-consult-panel .ser-buss-consult-heading-mode1 {
+	border: solid 1px;
+    text-align: center;
+    margin-bottom: 0px;
+    border-radius: 1px;
+    padding: 10px 0 0 0;
+    background-color: #0098f0;
+}
+.ser-buss-consult-main-panel .big-col .ser-buss-consult-content{
+	height: 300px;
+}
+.ser-buss-consult-main-panel .sms-col .ser-buss-consult-content{
+	height: 220px;
+}
+
+/*----------  service technology consulting -------------*/
+
+.ser-tech-conult-panel .ser-tech-conult-heading h4{
+	text-align: center
+}
+
+.ser-tech-consult-panel .ser-tech-consult-heading-mode1 {
+	border: solid 1px #0098f0;
+    text-align: center;
+    margin-bottom: 0px;
+    border-radius: 1px;
+    padding: 10px 0 0 0;
+    background-color: #8080802e;
+}
+.ser-tech-consult-panel .ser-tech-consult-heading-mode1 h3 {
+	font-size: 20px;
+}
+.ser-tech-consult-panel .ser-tech-consult-content {
+	border: solid 1px #0098f0;
+    padding: 10px;
+    height: 330px;
+}
+
+/*-----------  service management consulting ------------*/
+
+.ser-prof-ser-main-panel .aio-icon-box{
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+     padding: 10px;
+     height: 280px;
+}
+
+.ser-prof-ser-main-panel .content-head{
+	text-align: center;
+	margin-bottom: 10px;
+}
+.ser-prof-ser-main-panel .ser-prof-layout3{
+	height: 240px;
+}
+
+
+
+.ser-prof-ser-main-panel .blue-box .svgCorner {
+  fill:  #0098f0;
+  width: 8%;
+}
+
+.ser-prof-ser-main-panel .red-box .svgCorner {
+  fill:  red;
+  width: 8%;
+}
+
+.ser-prof-ser-main-panel .green-box .svgCorner {
+  fill:  green;
+  width: 8%;
+}
+
+.ser-prof-ser-main-panel .gray-box .svgCorner {
+  fill:  green;
+  width: 8%;
+}
+
+.svgCornerBL{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.svgCornerBR {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  -ms-transform: rotate(270deg); /* IE 9 */
+  -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+  transform: rotate(270deg);
+}
+
+.svgCornerTL{
+  position: absolute;
+  top: 0;
+  right: 0;
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+}
+
+.svgCornerTR{
+  position: absolute;
+  top: 0;
+  left: 0;
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+}
+.ser-prof-ser-main-panel .ser-prof-ser-content{
+	width: 100%;
+    text-align: center;
+}
+.ser-prof-ser-main-panel .smallbox{
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+     padding: 1px;
+     height: 50px;
+}
+
+.ser-prof-ser-main-panel .smallbox-final{
+     padding: 1px;
+     height: 40px;
+}
+
+.ser-prof-ser-main-panel .ser-prof-ser-content-final{
+	width: 100%;
+    text-align: center;
+    margin-top: 0px;
+}
+
+/* big box */
+
+.ser-prof-ser-main-panel .big-box{
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+     padding: 1px;
+     height: 60px;
+}
+
+.ser-prof-ser-main-panel .ser-prof-ser-content-big {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* trainning */
+
+.ser-prof-trainning-main-panel .service-training-services-layout4{
+	height: 450px;
+}
+
+.ser-prof-trainning-main-panel .service-training-services-layout3 {
+	height: 230px;
+}
+
+/* ------- Unified Commnication ---------- */  
+
+.solutions-unified-panel {
+	height: 300px;
+    margin-top: 20px;
+}
+.solutions-unified-panel:hover {
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.4);
+    border: 0px solid #d0bebe;
+}
+
+.solutions-unified-panel .service-serices-txt {	
+    text-align: center;
+    width: 100%;
+}
+
+/* -------- Contact Center -----------------*/
+
+
+.solutions-contact-center-panel {
+	height: 500px;
+    margin-top: 20px;
+}
+.solutions-contact-center-panel:hover {
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.4);
+    border: 0px solid #d0bebe;
+}
+
+.solutions-contact-center-panel .service-serices-txt {	
+    text-align: center;
+    width: 100%;
+}
+
+/* ---------  Custom Application -------------*/
+
+.solutions-cust-app-panel {
+	height: 420px;
+    margin-top: 20px;
+}
+.solutions-cust-app-panel:hover {
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.4);
+    border: 0px solid #d0bebe;
+}
+
+.solutions-cust-app-panel .service-serices-txt {	
+    text-align: center;
+    width: 100%;
+}
+
+/*--------- Test M */
+.testm-content {
+	border: solid 1px #0098f0;
+    padding: 10px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.testm-panel {
+	margin-bottom: 20px;
+}
+.bus-cons {
+    width: 30%;
+    margin-left: 10px;
+    padding: 20px;
+    box-shadow: 5px 10px #888888;
+    box-shadow: 10px 10px 5px grey;
+}
